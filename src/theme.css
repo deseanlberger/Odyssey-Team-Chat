@@ -1,0 +1,206 @@
+/* ============================================================
+   Odyssey Performance — global theme tokens & base styles
+   Ported 1:1 from the hi-fi prototype. Gold (#FFD700) is the
+   single accent in both themes. Hardware aesthetic: 2px radius,
+   hard zero-blur shadows, square scrollbars.
+   ============================================================ */
+
+@font-face {
+  font-family: 'Bicubik';
+  src: url('/fonts/Bicubik.otf') format('opentype');
+  font-weight: 900 950;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Euroblack Extended';
+  src: url('/fonts/EuroblackExtended.ttf') format('truetype');
+  font-weight: 900;
+  font-display: swap;
+}
+
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+#root {
+  height: 100%;
+}
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: #05101f;
+}
+input,
+button,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  outline: none;
+}
+
+:root,
+[data-theme='dark'] {
+  --app-bg: #020509;
+  --panel: #070e17;
+  --panel-2: #04080e;
+  --raised: #111d2b;
+  --line: #17222f;
+  --text: #e8ecf2;
+  --text-strong: #ffffff;
+  --muted: #8a99b0;
+  --faint2: #46566b;
+  --gold: #ffd700;
+  --gold-deep: #d4af00;
+  --gold-glow: #ffec80;
+  --gold-ink: #ffd700;
+  --green: #3dd67a;
+  --red: #e5383b;
+  --hover-row: rgba(255, 255, 255, 0.04);
+  --chip: #0b141f;
+  --chip-fg: #8a99b0;
+  --input: #050b13;
+  --steel-line: #5a6b85;
+  --scrim: rgba(2, 5, 9, 0.85);
+  color-scheme: dark;
+}
+
+[data-theme='light'] {
+  --app-bg: #edf0f5;
+  --panel: #ffffff;
+  --panel-2: #f6f8fb;
+  --raised: #e9eef4;
+  --line: #dce2ec;
+  --text: #26303f;
+  --text-strong: #08131f;
+  --muted: #5e6e86;
+  --faint2: #98a4b8;
+  --gold: #ffd700;
+  --gold-deep: #c89a00;
+  --gold-glow: #ffe566;
+  --gold-ink: #a88400;
+  --green: #1f9d57;
+  --red: #d12e30;
+  --hover-row: rgba(8, 19, 31, 0.04);
+  --chip: #eef2f7;
+  --chip-fg: #5e6e86;
+  --input: #ffffff;
+  --steel-line: #98a4b8;
+  --scrim: rgba(20, 30, 45, 0.55);
+  color-scheme: light;
+}
+
+::selection {
+  background: var(--gold);
+  color: #05101f;
+}
+a {
+  color: var(--gold-ink);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--gold-glow);
+}
+
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--line);
+  border-radius: 0;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes slidein {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes toastup {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 14px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Reusable class conventions from the prototype */
+.eyb {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.perf {
+  font-family: 'Euroblack Extended', 'Impact', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.mono {
+  font-family: 'Roboto Mono', monospace;
+}
+
+/* Message hover actions fade in on row hover */
+.msgacts {
+  opacity: 0;
+  transition: opacity 0.12s ease;
+}
+.msgrow:hover .msgacts {
+  opacity: 1;
+}
+.msgrow:hover {
+  background: var(--hover-row);
+}
+
+/* Ghost hover helper: border shifts to gold, text brightens.
+   Applied via the .ghost class + inline base styles. */
+.ghost:hover {
+  border-color: var(--gold) !important;
+  color: var(--text) !important;
+}
+.ghost-gold:hover {
+  border-color: var(--gold) !important;
+  color: var(--gold) !important;
+}
+.gold-btn:hover {
+  background: var(--gold-glow) !important;
+}
+.row-hover:hover {
+  background: var(--hover-row) !important;
+}
+.border-gold-hover:hover {
+  border-color: var(--gold) !important;
+}
