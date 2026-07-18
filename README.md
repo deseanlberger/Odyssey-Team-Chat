@@ -56,5 +56,8 @@ behind the same action surface later.
 
 ## Deployment
 
-Configured for **Vercel** (`vercel.json`, Vite framework preset). The build is a
-static SPA in `dist/`.
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fdeseanlberger%2FOdyssey-Team-Chat&project-name=odyssey-team-chat&repository-name=odyssey-team-chat)
+
+Click the button to clone this repo and deploy it to Vercel in one step —
+Vercel auto-detects the **Vite** framework (see `vercel.json`) and builds a
+static SPA in `dist/`. Every push then auto-deploys.
